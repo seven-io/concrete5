@@ -9,7 +9,7 @@
         <div class='form-group'>
             <?= $form->label('general:apiKey', t('API Key')) ?>
             <span><?= t('Required for sending. Get one for free at ') ?>
-            <a href='https://www.sms77.io'>Sms77</a>
+            <a href='https://www.sms77.io' target='_blank'>Sms77</a>
             </span>
             <?= $form->text('general:apiKey', $general['apiKey'], ['maxlength' => '90', 'required' => 'required']) ?>
         </div>
@@ -70,10 +70,22 @@
                 <label>
                     <?= $form->checkbox('sms:performance_tracking', 1, $sms['performance_tracking']) ?>
                     <?= t('Performance Tracking:') ?>
-                    <a href='https://help.sms77.io/en/performance-tracking-1'>
+                    <a href='https://help.sms77.io/en/performance-tracking-1' target='_blank'>
                         <?= t('more information') ?></a>
                 </label>
             </div>
+        </div>
+    </fieldset>
+
+    <fieldset>
+        <legend><?= t('Voice') ?></legend>
+
+        <div class='form-group'>
+            <?= $form->label('voice:from', t('From')) ?>
+            <span><?= t('Caller ID. Please use only verified sender IDs, one of your virtual inbound numbers or one of our') ?>
+            <a href='https://www.sms77.io/en/docs/gateway/general-phone-numbers/' target='_blank'><?= t('shared virtual numbers') ?></a>
+            </span>
+            <?= $form->text('voice:from', $voice['from'], ['maxlength' => '16']) ?>
         </div>
     </fieldset>
 

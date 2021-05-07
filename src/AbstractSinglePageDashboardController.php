@@ -8,7 +8,6 @@ use Concrete\Core\Package\Package;
 use Concrete\Core\Page\Controller\DashboardPageController;
 use Concrete\Core\Page\Page;
 use Concrete\Package\Sms77\Controller;
-use Sms77\Api\Client;
 
 abstract class AbstractSinglePageDashboardController extends DashboardPageController {
     /** @var array $config */
@@ -19,7 +18,6 @@ abstract class AbstractSinglePageDashboardController extends DashboardPageContro
 
     public function __construct(Page $c) {
         parent::__construct($c);
-
         $this->setConfig();
     }
 
@@ -36,10 +34,6 @@ abstract class AbstractSinglePageDashboardController extends DashboardPageContro
         foreach (Options::keys() as $k) {
             $this->config[$k] = $this->Config->get($k);
         }
-    }
-
-    protected function initClient($apiKey) {
-        return new Client($apiKey, 'concrete5');
     }
 
     protected function isValidSubmission() {

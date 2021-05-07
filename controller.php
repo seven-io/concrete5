@@ -15,7 +15,7 @@ class Controller extends Package {
 
     protected $appVersionRequired = '5.7.4.3b1';
     protected $pkgHandle = 'sms77';
-    protected $pkgVersion = '1.0';
+    protected $pkgVersion = '1.1.0';
 
     public function getPackageDescription() {
         return t('Send SMS via Sms77.');
@@ -45,7 +45,8 @@ class Controller extends Package {
                     continue;
                 }
 
-                $this->config->save($key, is_bool($default) ? (int)$default : $default);
+                $this->config->save(
+                    $key, (string)(is_bool($default) ? (int)$default : $default));
             }
         }
 

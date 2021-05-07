@@ -18,6 +18,10 @@ abstract class Options {
         'performance_tracking' => false,
     ];
 
+    const voice = [
+        'from' => null,
+    ];
+
     public static function all() {
         return (new ReflectionClass(static::class))->getConstants();
     }

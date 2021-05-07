@@ -32,12 +32,12 @@
         "sms77/api": "dev-php5.6"
     },
     "support": {
-        "docs": "https://github.com/sms77io/concrete5",
+        "docs": "https://github.com/sms77io/concrete5/blob/master/README.md",
         "email": "support@sms77.io",
         "issues": "https://github.com/sms77io/concrete5/issues",
         "rss": "https://www.sms77.io/de/feed/",
         "source": "https://github.com/sms77io/concrete5"
     },
     "type": "concrete5-package",
-    "version": "1.0.0"
+    "version": "1.1.0"
 }
