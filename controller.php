@@ -3,95 +3,16 @@ namespace Concrete\Package\Sms77;
 
 defined('C5_EXECUTE') or die('Access Denied.');
 
-use Concrete\Core\Config\Repository\Liaison;
 use Concrete\Core\Database\Connection\Connection;
-use Concrete\Core\Entity\Package as PackageEntity;
-use Concrete\Core\Http\Request;
 use Concrete\Core\Package\Package;
-use Concrete\Core\Page\Controller\DashboardPageController;
-use Concrete\Core\Page\Page;
 use Concrete\Core\Page\Single as SinglePage;
 use Exception;
-use ReflectionClass;
-use Sms77\Api\Client;
-
-abstract class AbstractSinglePageDashboardController extends DashboardPageController {
-    /** @var array $config */
-    protected $config;
-
-    /** @var Liaison $Config */
-    protected $Config;
-
-    public function __construct(Page $c) {
-        parent::__construct($c);
-
-        $this->setConfig();
-    }
-
-    private function setConfig() {
-        $pkg = Package::getByHandle('sms77');
-        assert($pkg instanceof PackageEntity);
-
-        $ctrl = $pkg->getController();
-        assert($ctrl instanceof Controller);
-
-        $this->Config = $ctrl->getConfig();
-        assert($this->Config instanceof Controller);
-
-        foreach (array_keys(Controller::$options) as $k) {
-            $this->config[$k] = $this->Config->get($k);
-        }
-    }
-
-    protected function initClient($apiKey) {
-        return new Client($apiKey, 'concrete5');
-    }
-
-    protected function isValidSubmission() {
-        $req = $this->getRequest();
-
-        if ($req instanceof Request && $req::isPost()
-            && $this->token->validate('submit')) {
-            return true;
-        }
-
-        $this->error->add(t('Invalid submission!'));
-
-        return false;
-    }
-}
-
-abstract class Routes {
-    const DASHBOARD = '/dashboard/sms77';
-    const BULK_SMS = '/dashboard/sms77/bulk_sms';
-
-    public static function all() {
-        $class = new ReflectionClass(static::class);
-        return $class->getConstants();
-    }
-
-    public static function getAbsoluteURL($route) {
-        return Page::getByPath($route)->getCollectionLink();
-    }
-}
+use Sms77\Concrete5\Options;
+use Sms77\Concrete5\Routes;
 
 class Controller extends Package {
     const MIN_PHP_VERSION = '5.6.0';
 
-    public static $options = [
-        'general' => [
-            'apiKey' => null,
-        ],
-        'sms' => [
-            'debug' => false,
-            'flash' => false,
-            'foreign_id' => null,
-            'from' => null,
-            'label' => null,
-            'no_reload' => false,
-            'performance_tracking' => false,
-        ],
-    ];
     protected $appVersionRequired = '5.7.4.3b1';
     protected $pkgHandle = 'sms77';
     protected $pkgVersion = '1.0';
@@ -116,7 +37,7 @@ class Controller extends Package {
 
         $this->getConfig();
 
-        foreach (self::$options as $group => $arr) {
+        foreach (Options::all() as $group => $arr) {
             foreach ($arr as $k => $default) {
                 $key = "$group.$k";
 

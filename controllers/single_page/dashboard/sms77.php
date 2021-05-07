@@ -1,16 +1,16 @@
 <?php
 namespace Concrete\Package\Sms77\Controller\SinglePage\Dashboard;
 
-use Concrete\Package\Sms77\AbstractSinglePageDashboardController;
-use Concrete\Package\Sms77\Controller;
-use Concrete\Package\Sms77\Routes;
+use Sms77\Concrete5\AbstractSinglePageDashboardController;
+use Sms77\Concrete5\Options;
+use Sms77\Concrete5\Routes;
 
 class Sms77 extends AbstractSinglePageDashboardController {
     public function submit() {
         $msg = '';
 
         if ($this->isValidSubmission()) {
-            foreach (Controller::$options as $group => $data) {
+            foreach (Options::all() as $group => $data) {
                 foreach (array_keys($data) as $setting) {
                     $this->Config->save("$group.$setting", $this->post("$group:$setting"));
                 }
@@ -28,7 +28,7 @@ class Sms77 extends AbstractSinglePageDashboardController {
     public function view() {
         $this->set('message', $this->get('message'));
 
-        foreach (array_keys(Controller::$options) as $group) {
+        foreach (Options::keys() as $group) {
             $this->set($group, $this->config[$group]);
         }
     }

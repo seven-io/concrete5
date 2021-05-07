@@ -6,8 +6,8 @@ use Concrete\Core\User\Group\Group;
 use Concrete\Core\User\Group\GroupList;
 use Concrete\Core\User\UserInfo;
 use Concrete\Core\User\UserInfoRepository;
-use Concrete\Package\Sms77\AbstractSinglePageDashboardController;
-use Concrete\Package\Sms77\Routes;
+use Sms77\Concrete5\AbstractSinglePageDashboardController;
+use Sms77\Concrete5\Routes;
 
 class BulkSms extends AbstractSinglePageDashboardController {
     const ALL_GROUPS_ID = -2; // ID used to send to all groups

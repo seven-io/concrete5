@@ -1,0 +1,57 @@
+<?php
+namespace Sms77\Concrete5;
+
+use Concrete\Core\Config\Repository\Liaison;
+use Concrete\Core\Entity\Package as PackageEntity;
+use Concrete\Core\Http\Request;
+use Concrete\Core\Package\Package;
+use Concrete\Core\Page\Controller\DashboardPageController;
+use Concrete\Core\Page\Page;
+use Concrete\Package\Sms77\Controller;
+use Sms77\Api\Client;
+
+abstract class AbstractSinglePageDashboardController extends DashboardPageController {
+    /** @var array $config */
+    protected $config;
+
+    /** @var Liaison $Config */
+    protected $Config;
+
+    public function __construct(Page $c) {
+        parent::__construct($c);
+
+        $this->setConfig();
+    }
+
+    private function setConfig() {
+        $pkg = Package::getByHandle('sms77');
+        assert($pkg instanceof PackageEntity);
+
+        $ctrl = $pkg->getController();
+        assert($ctrl instanceof Controller);
+
+        $this->Config = $ctrl->getConfig();
+        assert($this->Config instanceof Controller);
+
+        foreach (Options::keys() as $k) {
+            $this->config[$k] = $this->Config->get($k);
+        }
+    }
+
+    protected function initClient($apiKey) {
+        return new Client($apiKey, 'concrete5');
+    }
+
+    protected function isValidSubmission() {
+        $req = $this->getRequest();
+
+        if ($req instanceof Request && $req::isPost()
+            && $this->token->validate('submit')) {
+            return true;
+        }
+
+        $this->error->add(t('Invalid submission!'));
+
+        return false;
+    }
+}

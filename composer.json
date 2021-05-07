@@ -9,7 +9,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "Concrete\\Package\\Sms77\\": ""
+            "Sms77\\Concrete5\\": "src"
         }
     },
     "config": {
