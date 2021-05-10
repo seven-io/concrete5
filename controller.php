@@ -1,9 +1,10 @@
-<?php
+<?php declare(strict_types=1);
 namespace Concrete\Package\Sms77;
 
 defined('C5_EXECUTE') or die('Access Denied.');
 
 use Concrete\Core\Database\Connection\Connection;
+use Concrete\Core\Entity\Package as PackageEntity;
 use Concrete\Core\Package\Package;
 use Concrete\Core\Page\Single as SinglePage;
 use Exception;
@@ -11,21 +12,21 @@ use Sms77\Concrete5\Options;
 use Sms77\Concrete5\Routes;
 
 class Controller extends Package {
-    const MIN_PHP_VERSION = '5.6.0';
+    public const MIN_PHP_VERSION = '7.3.0';
 
-    protected $appVersionRequired = '5.7.4.3b1';
+    protected $appVersionRequired = '8.5.2';
     protected $pkgHandle = 'sms77';
-    protected $pkgVersion = '1.1.0';
+    protected $pkgVersion = '2.0.0';
 
-    public function getPackageDescription() {
+    public function getPackageDescription(): string {
         return t('Send SMS via Sms77.');
     }
 
-    public function getPackageName() {
+    public function getPackageName(): string {
         return t('Sms77');
     }
 
-    private function commonTasks($pkg) {
+    private function commonTasks(PackageEntity $pkg): void {
         if (version_compare(PHP_VERSION, self::MIN_PHP_VERSION, '<')) {
             throw new Exception(sprintf("PHP %s or greater needed to use this package.",
                 self::MIN_PHP_VERSION));
@@ -55,17 +56,17 @@ class Controller extends Package {
         }
     }
 
-    public function install() {
+    public function install(): void {
         $this->commonTasks(parent::install());
     }
 
-    public function upgrade() {
+    public function upgrade(): void {
         parent::upgrade();
 
         $this->commonTasks($this->getPackageEntity());
     }
 
-    public function uninstall() {
+    public function uninstall(): void {
         parent::uninstall();
 
         /** @var Connection $db */
@@ -76,7 +77,7 @@ class Controller extends Package {
     }
 
     /** Initialize the autoloader when the system boots up. */
-    public function on_start() {
+    public function on_start(): void {
         $file = $this->getPackagePath() . '/vendor/autoload.php';
 
         if (file_exists($file)) {

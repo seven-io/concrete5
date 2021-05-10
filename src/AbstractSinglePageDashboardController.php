@@ -1,5 +1,7 @@
-<?php
+<?php declare(strict_types=1);
 namespace Sms77\Concrete5;
+
+defined('C5_EXECUTE') or die('Access Denied.');
 
 use Concrete\Core\Config\Repository\Liaison;
 use Concrete\Core\Entity\Package as PackageEntity;
@@ -21,7 +23,7 @@ abstract class AbstractSinglePageDashboardController extends DashboardPageContro
         $this->setConfig();
     }
 
-    private function setConfig() {
+    private function setConfig(): void {
         $pkg = Package::getByHandle('sms77');
         assert($pkg instanceof PackageEntity);
 
@@ -36,7 +38,7 @@ abstract class AbstractSinglePageDashboardController extends DashboardPageContro
         }
     }
 
-    protected function isValidSubmission() {
+    protected function isValidSubmission(): bool {
         $req = $this->getRequest();
 
         if ($req instanceof Request && $req::isPost()

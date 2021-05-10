@@ -1,18 +1,21 @@
-<?php
+<?php declare(strict_types=1);
 namespace Concrete\Package\Sms77\Controller\SinglePage\Dashboard;
+
+defined('C5_EXECUTE') or die('Access Denied.');
 
 use Sms77\Concrete5\AbstractSinglePageDashboardController;
 use Sms77\Concrete5\Options;
 use Sms77\Concrete5\Routes;
 
 class Sms77 extends AbstractSinglePageDashboardController {
-    public function submit() {
+    public function submit(): void {
         $msg = '';
 
         if ($this->isValidSubmission()) {
             foreach (Options::all() as $group => $data) {
                 foreach (array_keys($data) as $setting) {
-                    $this->Config->save("$group.$setting", $this->post("$group:$setting"));
+                    $this->Config->save(
+                        "$group.$setting", $this->post("$group:$setting"));
                 }
             }
 
@@ -25,7 +28,7 @@ class Sms77 extends AbstractSinglePageDashboardController {
         $this->redirect($to);
     }
 
-    public function view() {
+    public function view(): void {
         $this->set('message', $this->get('message'));
 
         foreach (Options::keys() as $group) {

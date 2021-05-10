@@ -14,7 +14,7 @@
     },
     "config": {
         "platform": {
-            "php": "5.6"
+            "php": "7.3"
         }
     },
     "description": "Send SMS via Sms77",
@@ -28,8 +28,10 @@
     "license": "MIT",
     "name": "sms77/concrete5",
     "require": {
-        "concrete5/core": ">=5.7.4",
-        "sms77/api": "dev-php5.6"
+        "concrete5/core": ">=8.5.2",
+        "php": "7.3",
+        "sms77/api": "^2.4",
+        "ext-json": "*"
     },
     "support": {
         "docs": "https://github.com/sms77io/concrete5/blob/master/README.md",
@@ -39,5 +41,5 @@
         "source": "https://github.com/sms77io/concrete5"
     },
     "type": "concrete5-package",
-    "version": "1.1.0"
+    "version": "2.0.0"
 }

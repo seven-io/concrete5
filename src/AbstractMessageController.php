@@ -1,5 +1,7 @@
-<?php
+<?php declare(strict_types=1);
 namespace Sms77\Concrete5;
+
+defined('C5_EXECUTE') or die('Access Denied.');
 
 use Concrete\Core\Page\Page;
 use Concrete\Core\User\Group\Group;
@@ -9,7 +11,7 @@ use Concrete\Core\User\UserInfoRepository;
 use Sms77\Api\Client;
 
 abstract class AbstractMessageController extends AbstractSinglePageDashboardController {
-    const ALL_GROUPS_ID = -2; // ID used to send to all groups
+    public const ALL_GROUPS_ID = -2; // ID used to send to all groups
 
     /** @var UserInfoRepository $repository */
     protected $repo;
@@ -17,22 +19,31 @@ abstract class AbstractMessageController extends AbstractSinglePageDashboardCont
     /** @var Client|null $client */
     protected $client;
 
-    public function __construct(Page $c, UserInfoRepository $repo) {
+    /** @var string $apiKey */
+    private $apiKey;
+
+    public function __construct(Page $c, UserInfoRepository $repo, string $configKey) {
         parent::__construct($c);
         $this->repo = $repo;
+        $this->apiKey = $this->config['general']['apiKey'];
+        $this->config = $this->config[$configKey];
     }
 
-    abstract protected function onSubmit();
+    abstract protected function onSubmit(array $recipients);
 
-    public function submit() {
+    public function submit(): void {
         if ($this->isValidSubmission()) {
-            $this->onSubmit();
+            $to = $this->buildRecipients();
+
+            if (!$this->error->has()) {
+                $this->onSubmit($to);
+            }
         }
 
         $this->view();
     }
 
-    protected function buildRecipients() {
+    protected function buildRecipients(): array {
         $to = [];
 
         foreach ($this->getGroupMembers() as $groupMember) {
@@ -50,7 +61,7 @@ abstract class AbstractMessageController extends AbstractSinglePageDashboardCont
         return $to;
     }
 
-    protected function getText() {
+    protected function getText(): string {
         $text = $this->post('text', '');
 
         if ('' === $text) {
@@ -60,14 +71,18 @@ abstract class AbstractMessageController extends AbstractSinglePageDashboardCont
         return $text;
     }
 
-    public function on_start() {
+    protected function encode(object $json): string {
+        return json_encode($json, JSON_THROW_ON_ERROR | JSON_PRETTY_PRINT);
+    }
+
+    public function on_start(): void {
         parent::on_start();
 
         $this->initClient();
     }
 
     /** @return void */
-    public function view() {
+    public function view(): void {
         if (!$this->client) {
             $this->set('dashboardLink', Routes::getAbsoluteURL(Routes::DASHBOARD));
         }
@@ -76,7 +91,7 @@ abstract class AbstractMessageController extends AbstractSinglePageDashboardCont
         $this->setGroups();
     }
 
-    private function setGroups() {
+    private function setGroups(): void {
         $groups = [self::ALL_GROUPS_ID => t('All Groups')];
 
         foreach ((new GroupList)->getResults() as $group) {
@@ -88,7 +103,7 @@ abstract class AbstractMessageController extends AbstractSinglePageDashboardCont
     }
 
     /** @return UserInfo[] */
-    private function getGroupMembers() {
+    private function getGroupMembers(): ?array {
         $groupId = (int)$this->post('filter_group');
         if ($groupId === self::ALL_GROUPS_ID) { // groupID is set to "All"
             return $this->repo->all(true); // return all active users
@@ -104,26 +119,12 @@ abstract class AbstractMessageController extends AbstractSinglePageDashboardCont
         return $group->getGroupMembers();
     }
 
-    private function initClient() {
-        $apiKey = $this->config['general']['apiKey'];
-
-        if ('' === $apiKey) {
+    private function initClient(): void {
+        if ('' === $this->apiKey) {
             $this->error->add(t('An API key is needed for sending.'));
         }
         else {
-            $this->client = new Client($apiKey, 'concrete5');
+            $this->client = new Client($this->apiKey, 'concrete5');
         }
-    }
-
-    protected function buildExtraParams($configKey, $extras = []) {
-        $cfg = $this->config[$configKey];
-
-        foreach ($cfg as $k => $v) {
-            if ('' === $v) { // TODO: sms77/api throws on empty string values
-                unset($cfg[$k]);
-            }
-        }
-
-        return array_merge($cfg, ['json' => true], $extras);
     }
 }
