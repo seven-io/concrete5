@@ -7,12 +7,12 @@ use Concrete\Core\Page\Page;
 use ReflectionClass;
 
 abstract class Routes {
-    public const BULK_SMS = self::DASHBOARD . '/bulk_sms';
-    public const BULK_VOICE = self::DASHBOARD . '/bulk_voice';
-    public const DASHBOARD = '/dashboard/sms77';
+    public static $BULK_SMS = '/dashboard/sms77/bulk_sms';
+    public static $BULK_VOICE = '/dashboard/sms77/bulk_voice';
+    public static $DASHBOARD = '/dashboard/sms77';
 
     public static function all(): array {
-        return (new ReflectionClass(static::class))->getConstants();
+        return (new ReflectionClass(static::class))->getStaticProperties();
     }
 
     public static function getAbsoluteURL(string $route): string {

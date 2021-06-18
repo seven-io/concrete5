@@ -1,16 +1,16 @@
-<?xml version="1.0"?>
-<concrete5-cif version="1.0">
+<?xml version='1.0'?>
+<concrete5-cif version='1.0'>
     <attributekeys>
         <attributekey
-                category="user"
-                handle="phone"
-                indexed="1"
-                name="Phone Number"
-                package="sms77"
-                profile-editable="1"
-                register-editable="1"
-                searchable="1"
-                type="telephone"
+                category='user'
+                handle='phone'
+                indexed='1'
+                name='Phone Number'
+                package='sms77'
+                profile-editable='1'
+                register-editable='1'
+                searchable='1'
+                type='telephone'
         />
     </attributekeys>
 </concrete5-cif>

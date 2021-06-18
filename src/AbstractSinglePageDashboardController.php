@@ -23,7 +23,7 @@ abstract class AbstractSinglePageDashboardController extends DashboardPageContro
         $this->setConfig();
     }
 
-    private function setConfig(): void {
+    private function setConfig() {
         $pkg = Package::getByHandle('sms77');
         assert($pkg instanceof PackageEntity);
 

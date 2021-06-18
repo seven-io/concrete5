@@ -17,7 +17,7 @@
             "php": "7.3"
         }
     },
-    "description": "Send SMS via Sms77",
+    "description": "Concrete5 package for SMS and text-to-speech calls via Sms77",
     "homepage": "https://github.com/sms77io/concrete5",
     "keywords": [
         "cms",
@@ -30,7 +30,6 @@
     "require": {
         "concrete5/core": ">=8.5.2",
         "php": "7.3",
-        "sms77/api": "^2.4",
         "ext-json": "*"
     },
     "support": {
@@ -41,5 +40,5 @@
         "source": "https://github.com/sms77io/concrete5"
     },
     "type": "concrete5-package",
-    "version": "2.0.0"
+    "version": "2.1.0"
 }

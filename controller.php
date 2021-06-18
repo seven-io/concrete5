@@ -11,10 +11,13 @@ use Exception;
 use Sms77\Concrete5\Options;
 use Sms77\Concrete5\Routes;
 
-class Controller extends Package {
-    public const MIN_PHP_VERSION = '7.3.0';
+final class Controller extends Package {
+    private $MIN_PHP_VERSION = '7.3.0';
 
     protected $appVersionRequired = '8.5.2';
+    protected $pkgAutoloaderRegistries = [
+        'src' => '\Sms77\Concrete5',
+    ];
     protected $pkgHandle = 'sms77';
     protected $pkgVersion = '2.0.0';
 
@@ -27,12 +30,10 @@ class Controller extends Package {
     }
 
     private function commonTasks(PackageEntity $pkg): void {
-        if (version_compare(PHP_VERSION, self::MIN_PHP_VERSION, '<')) {
-            throw new Exception(sprintf("PHP %s or greater needed to use this package.",
-                self::MIN_PHP_VERSION));
+        if (version_compare(PHP_VERSION, $this->MIN_PHP_VERSION, '<')) {
+            throw new Exception(sprintf('PHP %s or greater needed to use this package.',
+                $this->MIN_PHP_VERSION));
         }
-
-        $this->on_start();
 
         $this->installContentFile('install.xml');
 
@@ -74,14 +75,5 @@ class Controller extends Package {
         $db->createQueryBuilder()->delete('Config')
             ->where('configNamespace = :namespace')
             ->setParameters([':namespace' => $this->pkgHandle])->execute();
-    }
-
-    /** Initialize the autoloader when the system boots up. */
-    public function on_start(): void {
-        $file = $this->getPackagePath() . '/vendor/autoload.php';
-
-        if (file_exists($file)) {
-            require_once $file;
-        }
     }
 }

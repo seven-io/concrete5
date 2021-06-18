@@ -6,11 +6,11 @@ defined('C5_EXECUTE') or die('Access Denied.');
 use ReflectionClass;
 
 abstract class Options {
-    public const general = [
+    public static $general = [
         'apiKey' => null,
     ];
 
-    public const sms = [
+    public static $sms = [
         'debug' => false,
         'flash' => false,
         'foreign_id' => null,
@@ -20,12 +20,12 @@ abstract class Options {
         'performance_tracking' => false,
     ];
 
-    public const voice = [
+    public static $voice = [
         'from' => null,
     ];
 
     public static function all(): array {
-        return (new ReflectionClass(static::class))->getConstants();
+        return (new ReflectionClass(static::class))->getStaticProperties();
     }
 
     public static function keys(): array {

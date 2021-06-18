@@ -7,7 +7,7 @@ use Sms77\Concrete5\AbstractSinglePageDashboardController;
 use Sms77\Concrete5\Options;
 use Sms77\Concrete5\Routes;
 
-class Sms77 extends AbstractSinglePageDashboardController {
+final class Sms77 extends AbstractSinglePageDashboardController {
     public function submit(): void {
         $msg = '';
 
@@ -22,7 +22,7 @@ class Sms77 extends AbstractSinglePageDashboardController {
             $msg = t('Settings updated!');
         }
 
-        $to = Routes::getAbsoluteURL(Routes::DASHBOARD);
+        $to = Routes::getAbsoluteURL(Routes::$DASHBOARD);
         if ('' !== $msg) $to .= "?message=$msg";
 
         $this->redirect($to);
