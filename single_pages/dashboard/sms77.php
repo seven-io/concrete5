@@ -42,7 +42,7 @@
             <div class="checkbox">
                 <label>
                     <?= $form->checkbox('sms:debug', 1, $sms['debug']) ?>
-                    <?= t('Debug: No SMS will be sent or calculated ir enabled') ?>
+                    <?= t('Debug: No SMS will be sent or calculated if enabled') ?>
                 </label>
             </div>
         </div>
