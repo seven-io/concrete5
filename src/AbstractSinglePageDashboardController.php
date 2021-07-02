@@ -1,5 +1,4 @@
-<?php declare(strict_types=1);
-namespace Sms77\Concrete5;
+<?php namespace Sms77\Concrete5;
 
 defined('C5_EXECUTE') or die('Access Denied.');
 
@@ -18,11 +17,17 @@ abstract class AbstractSinglePageDashboardController extends DashboardPageContro
     /** @var Liaison $Config */
     protected $Config;
 
+    /**
+     * @param Page $c
+     */
     public function __construct(Page $c) {
         parent::__construct($c);
         $this->setConfig();
     }
 
+    /**
+     *
+     */
     private function setConfig() {
         $pkg = Package::getByHandle('sms77');
         assert($pkg instanceof PackageEntity);
@@ -38,7 +43,10 @@ abstract class AbstractSinglePageDashboardController extends DashboardPageContro
         }
     }
 
-    protected function isValidSubmission(): bool {
+    /**
+     * @return bool
+     */
+    protected function isValidSubmission() {
         $req = $this->getRequest();
 
         if ($req instanceof Request && $req::isPost()

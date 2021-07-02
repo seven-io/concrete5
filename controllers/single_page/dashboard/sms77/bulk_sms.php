@@ -1,5 +1,4 @@
-<?php declare(strict_types=1);
-namespace Concrete\Package\Sms77\Controller\SinglePage\Dashboard\Sms77;
+<?php namespace Concrete\Package\Sms77\Controller\SinglePage\Dashboard\Sms77;
 
 defined('C5_EXECUTE') or die('Access Denied.');
 

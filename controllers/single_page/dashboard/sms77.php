@@ -1,5 +1,4 @@
-<?php declare(strict_types=1);
-namespace Concrete\Package\Sms77\Controller\SinglePage\Dashboard;
+<?php namespace Concrete\Package\Sms77\Controller\SinglePage\Dashboard;
 
 defined('C5_EXECUTE') or die('Access Denied.');
 
@@ -8,7 +7,10 @@ use Sms77\Concrete5\Options;
 use Sms77\Concrete5\Routes;
 
 final class Sms77 extends AbstractSinglePageDashboardController {
-    public function submit(): void {
+    /**
+     *
+     */
+    public function submit(){
         $msg = '';
 
         if ($this->isValidSubmission()) {
@@ -28,7 +30,10 @@ final class Sms77 extends AbstractSinglePageDashboardController {
         $this->redirect($to);
     }
 
-    public function view(): void {
+    /**
+     *
+     */
+    public function view() {
         $this->set('message', $this->get('message'));
 
         foreach (Options::keys() as $group) {

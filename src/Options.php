@@ -1,15 +1,16 @@
-<?php declare(strict_types=1);
-namespace Sms77\Concrete5;
+<?php namespace Sms77\Concrete5;
 
 defined('C5_EXECUTE') or die('Access Denied.');
 
 use ReflectionClass;
 
 abstract class Options {
+    /** @var array $general */
     public static $general = [
         'apiKey' => null,
     ];
 
+    /** @var array $sms */
     public static $sms = [
         'debug' => false,
         'flash' => false,
@@ -20,15 +21,22 @@ abstract class Options {
         'performance_tracking' => false,
     ];
 
+    /** @var array $voice */
     public static $voice = [
         'from' => null,
     ];
 
-    public static function all(): array {
+    /**
+     * @return array
+     */
+    public static function all() {
         return (new ReflectionClass(static::class))->getStaticProperties();
     }
 
-    public static function keys(): array {
+    /**
+     * @return array
+     */
+    public static function keys() {
         return array_keys(self::all());
     }
 }

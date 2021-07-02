@@ -1,14 +1,20 @@
-<?php declare(strict_types=1);
-namespace Sms77\Concrete5;
+<?php namespace Sms77\Concrete5;
 
 defined('C5_EXECUTE') or die('Access Denied.');
 
 use ReflectionClass;
 
 abstract class AbstractParams {
+    /** @var bool|null $debug */
     private $debug;
+
+    /** @var string|null $from */
     private $from;
+
+    /** @var string|null $from */
     private $text;
+
+    /** @var string|null $to */
     private $to;
 
     /**
@@ -17,7 +23,10 @@ abstract class AbstractParams {
      */
     private $json = true;
 
-    public function toArray(): array {
+    /**
+     * @return array
+     */
+    public function toArray() {
         $arr = [];
         $reflect = new ReflectionClass($this);
 
@@ -36,41 +45,69 @@ abstract class AbstractParams {
         return $arr;
     }
 
-    public function getDebug(): ?bool {
+    /**
+     * @return bool|null
+     */
+    public function getDebug() {
         return $this->debug;
     }
 
-    public function setDebug(?bool $debug): self {
+    /**
+     * @param bool|null $debug
+     * @return $this
+     */
+    public function setDebug($debug){
         $this->debug = $debug;
 
         return $this;
     }
 
-    public function getFrom(): ?string {
+    /**
+     * @return string|null
+     */
+    public function getFrom() {
         return $this->from;
     }
 
-    public function setFrom(?string $from): self {
+    /**
+     * @param string|null $from
+     * @return $this
+     */
+    public function setFrom($from) {
         $this->from = $from;
 
         return $this;
     }
 
-    public function getText(): ?string {
+    /**
+     * @return string|null
+     */
+    public function getText() {
         return $this->text;
     }
 
-    public function setText(string $text): self {
+    /**
+     * @param string $text
+     * @return $this
+     */
+    public function setText($text) {
         $this->text = $text;
 
         return $this;
     }
 
-    public function getTo(): ?string {
+    /**
+     * @return string|null
+     */
+    public function getTo() {
         return $this->to;
     }
 
-    public function setTo(string $to): self {
+    /**
+     * @param string $to
+     * @return $this
+     */
+    public function setTo($to) {
         $this->to = $to;
 
         return $this;

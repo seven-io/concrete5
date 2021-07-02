@@ -1,5 +1,4 @@
-<?php declare(strict_types=1);
-namespace Concrete\Package\Sms77;
+<?php namespace Concrete\Package\Sms77;
 
 defined('C5_EXECUTE') or die('Access Denied.');
 
@@ -12,24 +11,42 @@ use Sms77\Concrete5\Options;
 use Sms77\Concrete5\Routes;
 
 final class Controller extends Package {
+    /** @var string $MIN_PHP_VERSION */
     private $MIN_PHP_VERSION = '7.3.0';
 
+    /** @var string $appVersionRequired */
     protected $appVersionRequired = '8.5.2';
+
+    /** @var string[] $pkgAutoloaderRegistries */
     protected $pkgAutoloaderRegistries = [
         'src' => '\Sms77\Concrete5',
     ];
+
+    /** @var string $pkgHandle */
     protected $pkgHandle = 'sms77';
+
+    /** @var string $pkgVersion */
     protected $pkgVersion = '2.0.0';
 
-    public function getPackageDescription(): string {
+    /**
+     * @return mixed
+     */
+    public function getPackageDescription() {
         return t('Send SMS via Sms77.');
     }
 
-    public function getPackageName(): string {
+    /**
+     * @return string
+     */
+    public function getPackageName(){
         return t('Sms77');
     }
 
-    private function commonTasks(PackageEntity $pkg): void {
+    /**
+     * @param PackageEntity $pkg
+     * @throws Exception
+     */
+    private function commonTasks(PackageEntity $pkg) {
         if (version_compare(PHP_VERSION, $this->MIN_PHP_VERSION, '<')) {
             throw new Exception(sprintf('PHP %s or greater needed to use this package.',
                 $this->MIN_PHP_VERSION));
@@ -57,17 +74,26 @@ final class Controller extends Package {
         }
     }
 
-    public function install(): void {
+    /**
+     * @throws Exception
+     */
+    public function install(){
         $this->commonTasks(parent::install());
     }
 
-    public function upgrade(): void {
+    /**
+     * @throws Exception
+     */
+    public function upgrade() {
         parent::upgrade();
 
         $this->commonTasks($this->getPackageEntity());
     }
 
-    public function uninstall(): void {
+    /**
+     *
+     */
+    public function uninstall() {
         parent::uninstall();
 
         /** @var Connection $db */

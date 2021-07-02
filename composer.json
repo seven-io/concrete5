@@ -14,7 +14,7 @@
     },
     "config": {
         "platform": {
-            "php": "7.3"
+            "php": "5.6"
         }
     },
     "description": "Concrete5 package for SMS and text-to-speech calls via Sms77",
@@ -29,7 +29,7 @@
     "name": "sms77/concrete5",
     "require": {
         "concrete5/core": ">=8.5.2",
-        "php": "7.3",
+        "php": "5.6",
         "ext-json": "*"
     },
     "support": {
