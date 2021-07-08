@@ -4,6 +4,7 @@ defined('C5_EXECUTE') or die('Access Denied.');
 
 use Concrete\Core\Http\Client\Client;
 use Concrete\Core\Page\Page;
+use Concrete\Core\Support\Facade\Url;
 use Concrete\Core\User\Group\Group;
 use Concrete\Core\User\Group\GroupList;
 use Concrete\Core\User\UserInfo;
@@ -55,9 +56,7 @@ abstract class AbstractMessageController extends AbstractSinglePageDashboardCont
         $this->view();
     }
 
-    /**
-     * @return array
-     */
+    /** @return array */
     protected function buildRecipients() {
         $to = [];
 
@@ -76,9 +75,7 @@ abstract class AbstractMessageController extends AbstractSinglePageDashboardCont
         return $to;
     }
 
-    /**
-     * @return string
-     */
+    /** @return string */
     protected function getText() {
         $text = $this->post('text', '');
 
@@ -109,7 +106,7 @@ abstract class AbstractMessageController extends AbstractSinglePageDashboardCont
     /** @return void */
     public function view() {
         if (!$this->client) {
-            $this->set('dashboardLink', Routes::getAbsoluteURL(Routes::$DASHBOARD));
+            $this->set('dashboardLink', URL::to(Routes::$DASHBOARD));
         }
 
         $this->set('group', $this->post('group', self::$ALL_GROUPS_ID));
@@ -161,9 +158,7 @@ abstract class AbstractMessageController extends AbstractSinglePageDashboardCont
         $this->client = new ApiClient($client, $this->apiKey);
     }
 
-    /**
-     * @param $msg
-     */
+    /** @param string|array|null $msg */
     protected function setMessage($msg) {
         $this->set('message', isset($msg)
             ? is_array($msg) ? implode(PHP_EOL, $msg) : $msg

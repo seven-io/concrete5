@@ -2,6 +2,7 @@
 
 defined('C5_EXECUTE') or die('Access Denied.');
 
+use Concrete\Core\Support\Facade\Url;
 use Sms77\Concrete5\AbstractSinglePageDashboardController;
 use Sms77\Concrete5\Options;
 use Sms77\Concrete5\Routes;
@@ -24,7 +25,7 @@ final class Sms77 extends AbstractSinglePageDashboardController {
             $msg = t('Settings updated!');
         }
 
-        $to = Routes::getAbsoluteURL(Routes::$DASHBOARD);
+        $to = Url::to(Routes::$DASHBOARD);
         if ('' !== $msg) $to .= "?message=$msg";
 
         $this->redirect($to);

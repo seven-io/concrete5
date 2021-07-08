@@ -2,7 +2,6 @@
 
 defined('C5_EXECUTE') or die('Access Denied.');
 
-use Concrete\Core\Page\Page;
 use ReflectionClass;
 
 abstract class Routes {
@@ -20,13 +19,5 @@ abstract class Routes {
      */
     public static function all(){
         return (new ReflectionClass(static::class))->getStaticProperties();
-    }
-
-    /**
-     * @param string $route
-     * @return string
-     */
-    public static function getAbsoluteURL($route) {
-        return Page::getByPath($route)->getCollectionLink();
     }
 }

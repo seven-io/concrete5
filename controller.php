@@ -12,7 +12,7 @@ use Sms77\Concrete5\Routes;
 
 final class Controller extends Package {
     /** @var string $MIN_PHP_VERSION */
-    private $MIN_PHP_VERSION = '7.3.0';
+    private $MIN_PHP_VERSION = '5.6.0';
 
     /** @var string $appVersionRequired */
     protected $appVersionRequired = '8.5.2';
@@ -26,19 +26,15 @@ final class Controller extends Package {
     protected $pkgHandle = 'sms77';
 
     /** @var string $pkgVersion */
-    protected $pkgVersion = '2.1.0';
+    protected $pkgVersion = '2.2.0';
 
-    /**
-     * @return mixed
-     */
+    /** @return string */
     public function getPackageDescription() {
         return t('Send SMS via Sms77.');
     }
 
-    /**
-     * @return string
-     */
-    public function getPackageName(){
+    /** @return string */
+    public function getPackageName() {
         return t('Sms77');
     }
 
@@ -74,16 +70,12 @@ final class Controller extends Package {
         }
     }
 
-    /**
-     * @throws Exception
-     */
-    public function install(){
+    /** @throws Exception */
+    public function install() {
         $this->commonTasks(parent::install());
     }
 
-    /**
-     * @throws Exception
-     */
+    /** @throws Exception */
     public function upgrade() {
         parent::upgrade();
 
@@ -97,7 +89,7 @@ final class Controller extends Package {
         parent::uninstall();
 
         /** @var Connection $db */
-        $db = \Database::connection();
+        $db = $this->app->make('database/connection');
         $db->createQueryBuilder()->delete('Config')
             ->where('configNamespace = :namespace')
             ->setParameters([':namespace' => $this->pkgHandle])->execute();
