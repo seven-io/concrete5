@@ -26,14 +26,14 @@
 
         <div class='form-group'>
             <?= $form->label('sms:label', t('Label')) ?>
-            <span><?= t('Custom ID. Max. 100 chars, allowed characters:') ?>
+            <span><?= t('Custom label for filtering analytics. Max. 100 chars, allowed characters:') ?>
                 <code>a-z, A-Z, 0-9, .-_@</code></span>
             <?= $form->text('sms:label', $sms['label'], ['maxlength' => '100']) ?>
         </div>
 
         <div class='form-group'>
             <?= $form->label('sms:foreign_id', t('Foreign ID')) ?>
-            <span><?= t('Custom ID returned in DLR callbacks etc. Max. 64 chars, allowed characters:') ?>
+            <span><?= t('Custom value for arbitrary usage returned in callbacks etc. Max. 64 chars, allowed characters:') ?>
                 <code>a-z, A-Z, 0-9, .-_@</code></span>
             <?= $form->text('sms:foreign_id', $sms['foreign_id'], ['maxlength' => '64']) ?>
         </div>
@@ -51,7 +51,7 @@
             <div class="checkbox">
                 <label>
                     <?= $form->checkbox('sms:no_reload', 1, $sms['no_reload']) ?>
-                    <?= t('No Reload: Prevent sending duplicate SMS (text, type and recipient alike) within 180 seconds') ?>
+                    <?= t('Disable Reload Lock: Enable sending duplicate SMS (text, type and recipient alike) within 180 seconds') ?>
                 </label>
             </div>
         </div>
@@ -69,7 +69,7 @@
             <div class="checkbox">
                 <label>
                     <?= $form->checkbox('sms:performance_tracking', 1, $sms['performance_tracking']) ?>
-                    <?= t('Performance Tracking:') ?>
+                    <?= t('Enable Performance Tracking:') ?>
                     <a href='https://help.sms77.io/en/performance-tracking-1' target='_blank'>
                         <?= t('more information') ?></a>
                 </label>
