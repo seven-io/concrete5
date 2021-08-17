@@ -19,7 +19,7 @@ final class BulkVoice extends AbstractMessageController {
             ->setXml((bool)$this->post('xml', false));
 
         foreach ($recipients as $to) {
-            $msg[] = $this->encode($this->client->voice($params->setTo($to)));
+            $msg[] = $this->client->voice($params->setTo($to));
         }
 
         $this->setMessage($msg);

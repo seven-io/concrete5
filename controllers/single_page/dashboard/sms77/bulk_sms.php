@@ -13,7 +13,7 @@ final class BulkSms extends AbstractMessageController {
     }
 
     protected function onSubmit(array $recipients) {
-        $this->setMessage($this->encode($this->client->sms((new SmsParams)
+        $res = $this->client->sms((new SmsParams)
             ->setDebug((bool)$this->config['debug'])
             ->setFlash((bool)$this->config['flash'])
             ->setForeignId($this->config['foreign_id'])
@@ -22,6 +22,8 @@ final class BulkSms extends AbstractMessageController {
             ->setNoReload((bool)$this->config['no_reload'])
             ->setPerformanceTracking((bool)$this->config['performance_tracking'])
             ->setText($this->getText())
-            ->setTo(implode(',', $recipients)))));
+            ->setTo(implode(',', $recipients)));
+
+        $this->setMessage($res);
     }
 }

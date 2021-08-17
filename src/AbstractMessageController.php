@@ -160,8 +160,11 @@ abstract class AbstractMessageController extends AbstractSinglePageDashboardCont
 
     /** @param string|array|null $msg */
     protected function setMessage($msg) {
-        $this->set('message', isset($msg)
-            ? is_array($msg) ? implode(PHP_EOL, $msg) : $msg
-            : t('Nothing has been sent.'));
+        if (!isset($msg)) {
+            $this->set('error', t('Nothing has been sent.'));
+            return;
+        }
+
+        $this->set('apiResponses', is_array($msg) ? $msg : [$msg]);
     }
 }

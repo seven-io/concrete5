@@ -26,6 +26,17 @@ abstract class AbstractSinglePageDashboardController extends DashboardPageContro
     }
 
     /**
+     * @param $val
+     * @return string
+     */
+    public static function stringify($val) {
+        if (true === $val) return 'true';
+        if (false === $val) return 'false';
+        if (null === $val) return '-';
+        return $val;
+    }
+
+    /**
      *
      */
     private function setConfig() {
