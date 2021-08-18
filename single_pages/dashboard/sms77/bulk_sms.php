@@ -1,6 +1,8 @@
-<?php use Sms77\Concrete5\AbstractSinglePageDashboardController;
+<?php defined('C5_EXECUTE') or die('Access Denied.');
 
-defined('C5_EXECUTE') or die('Access Denied.'); ?>
+use Sms77\Concrete5\AbstractSinglePageDashboardController;
+
+?>
 
 <?php if (isset($dashboardLink)): ?>
     <a href='<?= $dashboardLink ?>'>

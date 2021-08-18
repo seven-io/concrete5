@@ -26,7 +26,7 @@ final class Controller extends Package {
     protected $pkgHandle = 'sms77';
 
     /** @var string $pkgVersion */
-    protected $pkgVersion = '2.3.0';
+    protected $pkgVersion = '2.3.1';
 
     /** @return string */
     public function getPackageDescription() {
