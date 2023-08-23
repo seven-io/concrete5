@@ -1,4 +1,4 @@
-<?php namespace Sms77\Concrete5;
+<?php namespace Seven\Concrete5;
 
 defined('C5_EXECUTE') or die('Access Denied.');
 

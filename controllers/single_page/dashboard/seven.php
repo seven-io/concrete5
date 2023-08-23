@@ -1,13 +1,13 @@
-<?php namespace Concrete\Package\Sms77\Controller\SinglePage\Dashboard;
+<?php namespace Concrete\Package\Seven\Controller\SinglePage\Dashboard;
 
 defined('C5_EXECUTE') or die('Access Denied.');
 
 use Concrete\Core\Support\Facade\Url;
-use Sms77\Concrete5\AbstractSinglePageDashboardController;
-use Sms77\Concrete5\Options;
-use Sms77\Concrete5\Routes;
+use Seven\Concrete5\AbstractSinglePageDashboardController;
+use Seven\Concrete5\Options;
+use Seven\Concrete5\Routes;
 
-final class Sms77 extends AbstractSinglePageDashboardController {
+final class Seven extends AbstractSinglePageDashboardController {
     /**
      *
      */

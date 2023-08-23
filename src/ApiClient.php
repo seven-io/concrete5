@@ -1,4 +1,4 @@
-<?php namespace Sms77\Concrete5;
+<?php namespace Seven\Concrete5;
 
 defined('C5_EXECUTE') or die('Access Denied.');
 
@@ -28,7 +28,7 @@ class ApiClient {
     private function request($endpoint, AbstractParams $data) {
         return json_decode($this->client
             ->setParameterPost($data->toArray())
-            ->setUri("https://gateway.sms77.io/api/$endpoint")
+            ->setUri('https://gateway.seven.io/api/' . $endpoint)
             ->send()->getBody());
     }
 

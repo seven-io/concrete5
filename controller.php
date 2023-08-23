@@ -1,4 +1,4 @@
-<?php namespace Concrete\Package\Sms77;
+<?php namespace Concrete\Package\Seven;
 
 defined('C5_EXECUTE') or die('Access Denied.');
 
@@ -7,8 +7,8 @@ use Concrete\Core\Entity\Package as PackageEntity;
 use Concrete\Core\Package\Package;
 use Concrete\Core\Page\Single as SinglePage;
 use Exception;
-use Sms77\Concrete5\Options;
-use Sms77\Concrete5\Routes;
+use Seven\Concrete5\Options;
+use Seven\Concrete5\Routes;
 
 final class Controller extends Package {
     /** @var string $MIN_PHP_VERSION */
@@ -19,23 +19,23 @@ final class Controller extends Package {
 
     /** @var string[] $pkgAutoloaderRegistries */
     protected $pkgAutoloaderRegistries = [
-        'src' => '\Sms77\Concrete5',
+        'src' => '\Seven\Concrete5',
     ];
 
     /** @var string $pkgHandle */
-    protected $pkgHandle = 'sms77';
+    protected $pkgHandle = 'seven';
 
     /** @var string $pkgVersion */
     protected $pkgVersion = '2.3.1';
 
     /** @return string */
     public function getPackageDescription() {
-        return t('Send SMS via Sms77.');
+        return t('Send SMS via seven.');
     }
 
     /** @return string */
     public function getPackageName() {
-        return t('Sms77');
+        return t('seven');
     }
 
     /**

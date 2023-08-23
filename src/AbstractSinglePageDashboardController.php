@@ -1,4 +1,4 @@
-<?php namespace Sms77\Concrete5;
+<?php namespace Seven\Concrete5;
 
 defined('C5_EXECUTE') or die('Access Denied.');
 
@@ -8,7 +8,7 @@ use Concrete\Core\Http\Request;
 use Concrete\Core\Package\Package;
 use Concrete\Core\Page\Controller\DashboardPageController;
 use Concrete\Core\Page\Page;
-use Concrete\Package\Sms77\Controller;
+use Concrete\Package\Seven\Controller;
 
 abstract class AbstractSinglePageDashboardController extends DashboardPageController {
     /** @var array $config */
@@ -40,7 +40,7 @@ abstract class AbstractSinglePageDashboardController extends DashboardPageContro
      *
      */
     private function setConfig() {
-        $pkg = Package::getByHandle('sms77');
+        $pkg = Package::getByHandle('seven');
         assert($pkg instanceof PackageEntity);
 
         $ctrl = $pkg->getController();

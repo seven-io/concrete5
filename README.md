@@ -1,7 +1,8 @@
-![Sms77.io Logo](https://www.sms77.io/wp-content/uploads/2019/07/sms77-Logo-400x79.png "Sms77.io Logo")
+![](https://www.seven.io/wp-content/uploads/Logo.svg "seven Logo")
+
 # Official package for [concrete5](https://www.concrete5.org/)
 
-This package adds an user attribute named "phone".
+This package adds a user attribute named "phone".
 
 ## Installation
 
@@ -9,10 +10,10 @@ This package adds an user attribute named "phone".
 
 `cd path/to/the/concrete5/root/directory`
 
-`composer require sms77/concrete5`
+`composer require seven.io/concrete5`
 
 ### Support
 
-Need help? Feel free to [contact us](https://www.sms77.io/en/company/contact/).
+Need help? Feel free to [contact us](https://www.seven.io/en/company/contact/).
 
-[![MIT](https://img.shields.io/badge/License-MIT-teal.svg)](./LICENSE)
+[![MIT](https://img.shields.io/badge/License-MIT-teal.svg)](LICENSE)

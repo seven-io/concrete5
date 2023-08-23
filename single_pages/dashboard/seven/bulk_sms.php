@@ -1,6 +1,6 @@
 <?php defined('C5_EXECUTE') or die('Access Denied.');
 
-use Sms77\Concrete5\AbstractSinglePageDashboardController;
+use Seven\Concrete5\AbstractSinglePageDashboardController;
 
 ?>
 
@@ -11,17 +11,17 @@ use Sms77\Concrete5\AbstractSinglePageDashboardController;
 <?php else: ?>
     <?php if (isset($apiResponses)): ?>
         <script>
-            function sms77ToggleRawResponse() {
-                document.getElementById('sms77RawResponse').classList.toggle('hidden')
+            function sevenToggleRawResponse() {
+                document.getElementById('sevenRawResponse').classList.toggle('hidden')
             }
         </script>
 
         <div class='alert alert-info'>
-            <button onclick='sms77ToggleRawResponse()' class='btn btn-primary btn-xs'>
+            <button onclick='sevenToggleRawResponse()' class='btn btn-primary btn-xs'>
                 <?= t('Raw') ?></button>
             <button type='button' class='close' data-dismiss='alert'>×</button>
 
-            <pre id='sms77RawResponse' class='hidden'>
+            <pre id='sevenRawResponse' class='hidden'>
                 <?= json_encode($apiResponses, JSON_PRETTY_PRINT) ?></pre>
 
             <?php foreach ($apiResponses as $i => $res): ?>

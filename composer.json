@@ -1,15 +1,15 @@
 {
     "authors": [
         {
-            "email": "support@sms77.io",
-            "homepage": "https://www.sms77.io",
-            "name": "sms77 e.K.",
+            "email": "support@seven.io",
+            "homepage": "https://www.seven.io",
+            "name": "seven communications GmbH & Co. KG",
             "role": "Organization"
         }
     ],
     "autoload": {
         "psr-4": {
-            "Sms77\\Concrete5\\": "src"
+            "Seven\\Concrete5\\": "src"
         }
     },
     "config": {
@@ -17,8 +17,8 @@
             "php": "5.6"
         }
     },
-    "description": "Concrete5 package for SMS and text-to-speech calls via Sms77",
-    "homepage": "https://github.com/sms77io/concrete5",
+    "description": "Concrete5 package for SMS and text-to-speech calls via seven",
+    "homepage": "https://github.com/seven-io/concrete5",
     "keywords": [
         "cms",
         "concrete5",
@@ -26,18 +26,18 @@
         "sms"
     ],
     "license": "MIT",
-    "name": "sms77/concrete5",
+    "name": "seven.io/concrete5",
     "require": {
         "concrete5/core": ">=8.5.2",
         "php": "5.6",
         "ext-json": "*"
     },
     "support": {
-        "docs": "https://github.com/sms77io/concrete5/blob/master/README.md",
-        "email": "support@sms77.io",
-        "issues": "https://github.com/sms77io/concrete5/issues",
-        "rss": "https://www.sms77.io/de/feed/",
-        "source": "https://github.com/sms77io/concrete5"
+        "docs": "https://github.com/seven-io/concrete5/blob/master/README.md",
+        "email": "support@seven.io",
+        "issues": "https://github.com/seven-io/concrete5/issues",
+        "rss": "https://www.seven.io/en/feed/",
+        "source": "https://github.com/seven-io/concrete5"
     },
     "type": "concrete5-package",
     "version": "2.3.1"

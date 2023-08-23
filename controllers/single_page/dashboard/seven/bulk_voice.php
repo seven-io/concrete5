@@ -1,11 +1,11 @@
-<?php namespace Concrete\Package\Sms77\Controller\SinglePage\Dashboard\Sms77;
+<?php namespace Concrete\Package\Seven\Controller\SinglePage\Dashboard\Seven;
 
 defined('C5_EXECUTE') or die('Access Denied.');
 
 use Concrete\Core\Page\Page;
 use Concrete\Core\User\UserInfoRepository;
-use Sms77\Concrete5\AbstractMessageController;
-use Sms77\Concrete5\VoiceParams;
+use Seven\Concrete5\AbstractMessageController;
+use Seven\Concrete5\VoiceParams;
 
 final class BulkVoice extends AbstractMessageController {
     public function __construct(Page $c, UserInfoRepository $repo) {
