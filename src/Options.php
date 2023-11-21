@@ -12,7 +12,6 @@ abstract class Options {
 
     /** @var array $sms */
     public static $sms = [
-        'debug' => false,
         'flash' => false,
         'foreign_id' => null,
         'from' => null,

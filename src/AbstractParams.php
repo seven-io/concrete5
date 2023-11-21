@@ -5,9 +5,6 @@ defined('C5_EXECUTE') or die('Access Denied.');
 use ReflectionClass;
 
 abstract class AbstractParams {
-    /** @var bool|null $debug */
-    private $debug;
-
     /** @var string|null $from */
     private $from;
 
@@ -43,23 +40,6 @@ abstract class AbstractParams {
         }
 
         return $arr;
-    }
-
-    /**
-     * @return bool|null
-     */
-    public function getDebug() {
-        return $this->debug;
-    }
-
-    /**
-     * @param bool|null $debug
-     * @return $this
-     */
-    public function setDebug($debug){
-        $this->debug = $debug;
-
-        return $this;
     }
 
     /**

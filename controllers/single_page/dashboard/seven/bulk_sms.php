@@ -14,7 +14,6 @@ final class BulkSms extends AbstractMessageController {
 
     protected function onSubmit(array $recipients) {
         $res = $this->client->sms((new SmsParams)
-            ->setDebug((bool)$this->config['debug'])
             ->setFlash((bool)$this->config['flash'])
             ->setForeignId($this->config['foreign_id'])
             ->setFrom($this->config['from'])

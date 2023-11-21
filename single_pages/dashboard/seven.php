@@ -41,15 +41,6 @@
         <div class='form-group'>
             <div class="checkbox">
                 <label>
-                    <?= $form->checkbox('sms:debug', 1, $sms['debug']) ?>
-                    <?= t('Debug: No SMS will be sent or calculated if enabled') ?>
-                </label>
-            </div>
-        </div>
-
-        <div class='form-group'>
-            <div class="checkbox">
-                <label>
                     <?= $form->checkbox('sms:no_reload', 1, $sms['no_reload']) ?>
                     <?= t('Disable Reload Lock: Enable sending duplicate SMS (text, type and recipient alike) within 180 seconds') ?>
                 </label>
