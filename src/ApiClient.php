@@ -5,14 +5,9 @@ defined('C5_EXECUTE') or die('Access Denied.');
 use Concrete\Core\Http\Client\Client;
 
 class ApiClient {
-    /** @var Client $client */
-    private $client;
+    private Client $client;
 
-    /**
-     * @param Client $client
-     * @param string $apiKey
-     */
-    public function __construct(Client $client, $apiKey) {
+    public function __construct(Client $client, string $apiKey) {
         $this->client = $client->setHeaders([
             'SentWith' => 'concrete5',
             'X-Api-Key' => $apiKey,
@@ -21,11 +16,9 @@ class ApiClient {
     }
 
     /**
-     * @param string $endpoint
-     * @param AbstractParams $data
      * @return object
      */
-    private function request($endpoint, AbstractParams $data) {
+    private function request(string $endpoint, AbstractParams $data) {
         return json_decode($this->client
             ->setParameterPost($data->toArray())
             ->setUri('https://gateway.seven.io/api/' . $endpoint)
@@ -41,7 +34,6 @@ class ApiClient {
     }
 
     /**
-     * @param VoiceParams $params
      * @return object
      */
     public function voice(VoiceParams $params) {

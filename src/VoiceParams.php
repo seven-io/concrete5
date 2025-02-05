@@ -3,21 +3,13 @@
 defined('C5_EXECUTE') or die('Access Denied.');
 
 class VoiceParams extends AbstractParams {
-    /** @var bool|null $xml */
-    private $xml;
+    private bool|null $xml;
 
-    /**
-     * @return bool|null
-     */
-    public function getXml() {
+    public function getXml(): bool|null {
         return $this->xml;
     }
 
-    /**
-     * @param bool|null $xml
-     * @return $this
-     */
-    public function setXml($xml) {
+    public function setXml(bool|null $xml): self {
         $this->xml = $xml;
 
         return $this;

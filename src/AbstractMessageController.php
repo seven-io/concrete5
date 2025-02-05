@@ -11,24 +11,15 @@ use Concrete\Core\User\UserInfo;
 use Concrete\Core\User\UserInfoRepository;
 
 abstract class AbstractMessageController extends AbstractSinglePageDashboardController {
-    /** @var int $ALL_GROUPS_ID */
-    public static $ALL_GROUPS_ID = -2; // ID used to send to all groups
+    public static int $ALL_GROUPS_ID = -2; // ID used to send to all groups
 
-    /** @var UserInfoRepository $repository */
-    protected $repo;
+    protected UserInfoRepository $repo;
 
-    /** @var ApiClient|null $client */
-    protected $client;
+    protected ApiClient|null $client;
 
-    /** @var string $apiKey */
-    private $apiKey;
+    private string $apiKey;
 
-    /**
-     * @param Page $c
-     * @param UserInfoRepository $repo
-     * @param string $configKey
-     */
-    public function __construct(Page $c, UserInfoRepository $repo, $configKey) {
+    public function __construct(Page $c, UserInfoRepository $repo, string $configKey) {
         parent::__construct($c);
         $this->repo = $repo;
         $this->apiKey = $this->config['general']['apiKey'];
@@ -36,7 +27,6 @@ abstract class AbstractMessageController extends AbstractSinglePageDashboardCont
     }
 
     /**
-     * @param array $recipients
      * @return mixed
      */
     abstract protected function onSubmit(array $recipients);
@@ -56,8 +46,7 @@ abstract class AbstractMessageController extends AbstractSinglePageDashboardCont
         $this->view();
     }
 
-    /** @return array */
-    protected function buildRecipients() {
+    protected function buildRecipients(): array {
         $to = [];
 
         foreach ($this->getGroupMembers() as $groupMember) {
@@ -75,8 +64,7 @@ abstract class AbstractMessageController extends AbstractSinglePageDashboardCont
         return $to;
     }
 
-    /** @return string */
-    protected function getText() {
+    protected function getText(): string {
         $text = $this->post('text', '');
 
         if ('' === $text) {
@@ -88,9 +76,8 @@ abstract class AbstractMessageController extends AbstractSinglePageDashboardCont
 
     /**
      * @param object $json
-     * @return string
      */
-    protected function encode($json) {
+    protected function encode($json): string {
         return json_encode($json, JSON_PRETTY_PRINT);
     }
 
@@ -128,7 +115,7 @@ abstract class AbstractMessageController extends AbstractSinglePageDashboardCont
     }
 
     /** @return UserInfo[] */
-    private function getGroupMembers() {
+    private function getGroupMembers(): array|null {
         $groupId = (int)$this->post('filter_group');
         if ($groupId === self::$ALL_GROUPS_ID) { // groupID is set to "All"
             return $this->repo->all(true); // return all active users
@@ -147,7 +134,7 @@ abstract class AbstractMessageController extends AbstractSinglePageDashboardCont
     /**
      *
      */
-    private function initClient() {
+    private function initClient(): void {
         if ('' === $this->apiKey) {
             $this->error->add(t('An API key is needed for sending.'));
             return;
@@ -158,8 +145,7 @@ abstract class AbstractMessageController extends AbstractSinglePageDashboardCont
         $this->client = new ApiClient($client, $this->apiKey);
     }
 
-    /** @param string|array|null $msg */
-    protected function setMessage($msg) {
+    protected function setMessage(string|array|null $msg): void {
         if (!isset($msg)) {
             $this->set('error', t('Nothing has been sent.'));
             return;

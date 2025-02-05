@@ -6,121 +6,73 @@ defined('C5_EXECUTE') or die('Access Denied.');
  *
  */
 class SmsParams extends AbstractParams {
-    /** @var string|null $delay */
-    private $delay;
+    private string|null $delay;
 
-    /** @var bool|null $flash */
-    private $flash;
+    private bool|null $flash;
 
-    /** @var string|null $foreign_id */
-    private $foreign_id;
+    private string|null $foreign_id;
 
-    /** @var string|null $label */
-    private $label;
+    private string|null $label;
 
-    /** @var bool|null $no_reload */
-    private $no_reload;
+    private bool|null $no_reload;
 
-    /** @var bool|null $performance_tracking */
-    private $performance_tracking;
+    private bool|null $performance_tracking;
 
-    /**
-     * @return string|null
-     */
-    public function getDelay(){
+    public function getDelay(): string|null {
         return $this->delay;
     }
 
-    /**
-     * @param string|null $delay
-     * @return $this
-     */
-    public function setDelay($delay) {
+    public function setDelay(string|null $delay): self {
         $this->delay = $delay;
 
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
-    public function getFlash(){
+    public function getFlash(): bool|null {
         return $this->flash;
     }
 
-    /**
-     * @param bool|null $flash
-     * @return $this
-     */
-    public function setFlash($flash) {
+    public function setFlash(bool|null $flash): self {
         $this->flash = $flash;
 
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getForeignId() {
+    public function getForeignId(): string|null {
         return $this->foreign_id;
     }
 
-    /**
-     * @param string|null $foreign_id
-     * @return $this
-     */
-    public function setForeignId($foreign_id) {
+    public function setForeignId(string|null $foreign_id): self {
         $this->foreign_id = $foreign_id;
 
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getLabel() {
+    public function getLabel(): string|null {
         return $this->label;
     }
 
-    /**
-     * @param string|null $label
-     * @return $this
-     */
-    public function setLabel($label) {
+    public function setLabel(string|null $label): self {
         $this->label = $label;
 
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
-    public function getNoReload() {
+    public function getNoReload(): bool|null {
         return $this->no_reload;
     }
 
-    /**
-     * @param bool|null $no_reload
-     * @return $this
-     */
-    public function setNoReload($no_reload) {
+    public function setNoReload(bool|null $no_reload): self {
         $this->no_reload = $no_reload;
 
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
-    public function getPerformanceTracking() {
+    public function getPerformanceTracking(): bool|null {
         return $this->performance_tracking;
     }
 
-    /**
-     * @param bool|null $performance_tracking
-     * @return $this
-     */
-    public function setPerformanceTracking($performance_tracking) {
+    public function setPerformanceTracking(bool|null $performance_tracking): self {
         $this->performance_tracking = $performance_tracking;
 
         return $this;

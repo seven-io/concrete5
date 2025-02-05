@@ -11,25 +11,16 @@ use Concrete\Core\Page\Page;
 use Concrete\Package\Seven\Controller;
 
 abstract class AbstractSinglePageDashboardController extends DashboardPageController {
-    /** @var array $config */
-    protected $config;
+    protected array $config;
 
-    /** @var Liaison $Config */
-    protected $Config;
+    protected Liaison $Config;
 
-    /**
-     * @param Page $c
-     */
     public function __construct(Page $c) {
         parent::__construct($c);
         $this->setConfig();
     }
 
-    /**
-     * @param $val
-     * @return string
-     */
-    public static function stringify($val) {
+    public static function stringify($val): string {
         if (true === $val) return 'true';
         if (false === $val) return 'false';
         if (null === $val) return '-';

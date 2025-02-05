@@ -5,25 +5,18 @@ defined('C5_EXECUTE') or die('Access Denied.');
 use ReflectionClass;
 
 abstract class AbstractParams {
-    /** @var string|null $from */
-    private $from;
+    private string|null $from;
 
-    /** @var string|null $from */
-    private $text;
+    private string|null $text;
 
-    /** @var string|null $to */
-    private $to;
+    private string|null $to;
 
     /**
      * @unused
-     * @var bool $json
      */
-    private $json = true;
+    private bool $json = true;
 
-    /**
-     * @return array
-     */
-    public function toArray() {
+    public function toArray(): array {
         $arr = [];
         $reflect = new ReflectionClass($this);
 
@@ -42,10 +35,7 @@ abstract class AbstractParams {
         return $arr;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getFrom() {
+    public function getFrom(): string|null {
         return $this->from;
     }
 
@@ -66,28 +56,17 @@ abstract class AbstractParams {
         return $this->text;
     }
 
-    /**
-     * @param string $text
-     * @return $this
-     */
-    public function setText($text) {
+    public function setText(string $text): self {
         $this->text = $text;
 
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getTo() {
+    public function getTo(): string|null {
         return $this->to;
     }
 
-    /**
-     * @param string $to
-     * @return $this
-     */
-    public function setTo($to) {
+    public function setTo(string $to): self {
         $this->to = $to;
 
         return $this;

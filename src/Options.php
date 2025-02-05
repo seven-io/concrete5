@@ -5,13 +5,11 @@ defined('C5_EXECUTE') or die('Access Denied.');
 use ReflectionClass;
 
 abstract class Options {
-    /** @var array $general */
-    public static $general = [
+    public static array $general = [
         'apiKey' => null,
     ];
 
-    /** @var array $sms */
-    public static $sms = [
+    public static array $sms = [
         'flash' => false,
         'foreign_id' => null,
         'from' => null,
@@ -20,22 +18,15 @@ abstract class Options {
         'performance_tracking' => false,
     ];
 
-    /** @var array $voice */
-    public static $voice = [
+    public static array $voice = [
         'from' => null,
     ];
 
-    /**
-     * @return array
-     */
-    public static function all() {
+    public static function all(): array {
         return (new ReflectionClass(static::class))->getStaticProperties();
     }
 
-    /**
-     * @return array
-     */
-    public static function keys() {
+    public static function keys(): array {
         return array_keys(self::all());
     }
 }
