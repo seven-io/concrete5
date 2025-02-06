@@ -71,6 +71,41 @@
         </div>
     </fieldset>
 
+    <fieldset>
+        <legend><?= t('RCS') ?></legend>
+
+        <div class='form-group'>
+            <?= $form->label('rcs:from', t('From')) ?>
+            <span><?= t('An optional agent ID') ?></span>
+            <?= $form->text('rcs:from', $rcs['from'], ['maxlength' => '16']) ?>
+        </div>
+
+        <div class='form-group'>
+            <?= $form->label('rcs:label', t('Label')) ?>
+            <span><?= t('Custom label for filtering analytics. Max. 100 chars, allowed characters:') ?>
+                <code>a-z, A-Z, 0-9, .-_@</code></span>
+            <?= $form->text('rcs:label', $rcs['label'], ['maxlength' => '100']) ?>
+        </div>
+
+        <div class='form-group'>
+            <?= $form->label('rcs:foreign_id', t('Foreign ID')) ?>
+            <span><?= t('Custom value for arbitrary usage returned in callbacks etc. Max. 64 chars, allowed characters:') ?>
+                <code>a-z, A-Z, 0-9, .-_@</code></span>
+            <?= $form->text('rcs:foreign_id', $rcs['foreign_id'], ['maxlength' => '64']) ?>
+        </div>
+
+        <div class='form-group'>
+            <div class='checkbox'>
+                <label>
+                    <?= $form->checkbox('rcs:performance_tracking', 1, $rcs['performance_tracking']) ?>
+                    <?= t('Enable Performance Tracking:') ?>
+                    <a href='https://help.seven.io/en/performance-tracking' target='_blank'>
+                        <?= t('more information') ?></a>
+                </label>
+            </div>
+        </div>
+    </fieldset>
+
     <div class='ccm-dashboard-form-actions-wrapper'>
         <div class='ccm-dashboard-form-actions'>
             <button class='btn btn-primary pull-right'>

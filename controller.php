@@ -30,7 +30,7 @@ final class Controller extends Package {
 
     /** @return string */
     public function getPackageDescription() {
-        return t('Send SMS via seven.');
+        return t('Send SMS/TTS-Calls/RCS via seven.');
     }
 
     /** @return string */

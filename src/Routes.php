@@ -5,6 +5,8 @@ defined('C5_EXECUTE') or die('Access Denied.');
 use ReflectionClass;
 
 abstract class Routes {
+    public const BULK_RCS = '/dashboard/seven/bulk_rcs';
+
     public const BULK_SMS = '/dashboard/seven/bulk_sms';
 
     public const BULK_VOICE = '/dashboard/seven/bulk_voice';

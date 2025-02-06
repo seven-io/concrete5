@@ -100,10 +100,7 @@ abstract class AbstractMessageController extends AbstractSinglePageDashboardCont
         $this->setGroups();
     }
 
-    /**
-     *
-     */
-    private function setGroups() {
+    private function setGroups(): void {
         $groups = [self::$ALL_GROUPS_ID => t('All Groups')];
 
         foreach ((new GroupList)->getResults() as $group) {
@@ -114,8 +111,8 @@ abstract class AbstractMessageController extends AbstractSinglePageDashboardCont
         $this->set('groups', $groups);
     }
 
-    /** @return UserInfo[] */
-    private function getGroupMembers(): array|null {
+    /** @return UserInfo[]|null */
+    private function getGroupMembers(): ?array {
         $groupId = (int)$this->post('filter_group');
         if ($groupId === self::$ALL_GROUPS_ID) { // groupID is set to 'All'
             return $this->repo->all(true); // return all active users
@@ -131,9 +128,6 @@ abstract class AbstractMessageController extends AbstractSinglePageDashboardCont
         return $group->getGroupMembers();
     }
 
-    /**
-     *
-     */
     private function initClient(): void {
         if ('' === $this->apiKey) {
             $this->error->add(t('An API key is needed for sending.'));

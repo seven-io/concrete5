@@ -9,6 +9,13 @@ abstract class Options {
         'apiKey' => null,
     ];
 
+    public static array $rcs = [
+        'foreign_id' => null,
+        'from' => null,
+        'label' => null,
+        'performance_tracking' => false,
+    ];
+
     public static array $sms = [
         'flash' => false,
         'foreign_id' => null,

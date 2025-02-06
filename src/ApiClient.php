@@ -16,12 +16,16 @@ class ApiClient {
         $this->client->setMethod('POST');
     }
 
-    private function request(string $endpoint, SmsParams|VoiceParams $data): object {
+    private function request(string $endpoint, SmsParams|VoiceParams|RcsParams $data): object {
         return json_decode($this->client
             ->setParameterPost($data->toArray())
             ->setUri('https://gateway.seven.io/api/' . $endpoint)
             ->send()
             ->getBody());
+    }
+
+    public function rcs(RcsParams $params): object {
+        return $this->request('rcs/messages', $params);
     }
 
     public function sms(SmsParams $params): object {
