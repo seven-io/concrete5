@@ -9,6 +9,7 @@ class ApiClient {
 
     public function __construct(Client $client, string $apiKey) {
         $this->client = $client->setHeaders([
+            'Accept' => 'application/json',
             'SentWith' => 'concrete5',
             'X-Api-Key' => $apiKey,
         ]);

@@ -7,11 +7,6 @@ class VoiceParams {
     private ?string $text;
     private ?string $to;
 
-    /**
-     * @unused
-     */
-    private bool $json = true;
-
     public function getFrom(): ?string {
         return $this->from;
     }
