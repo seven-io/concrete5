@@ -94,15 +94,6 @@ use Seven\Concrete5\AbstractSinglePageDashboardController;
         </fieldset>
 
         <div class='form-group'>
-            <div class="checkbox">
-                <label>
-                    <?= $form->checkbox('xml', 1, $xml) ?>
-                    <?= t('XML: Specifies whether the text is plain text or in XML format') ?>
-                </label>
-            </div>
-        </div>
-
-        <div class='form-group'>
             <?= $form->label('text', t('Text')) ?>
             <?= $form->textarea('text', ['maxlength' => 10000, 'required' => 'required', 'rows' => 5]) ?>
             <p class='help-block'><?= t('Maximum 10000 characters.') ?></p>

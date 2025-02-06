@@ -6,7 +6,6 @@ class VoiceParams {
     private ?string $from;
     private ?string $text;
     private ?string $to;
-    private ?bool $xml;
 
     /**
      * @unused
@@ -39,17 +38,6 @@ class VoiceParams {
 
     public function setTo(string $to): static {
         $this->to = $to;
-
-        return $this;
-    }
-
-
-    public function getXml(): ?bool {
-        return $this->xml;
-    }
-
-    public function setXml(?bool $xml): static {
-        $this->xml = $xml;
 
         return $this;
     }

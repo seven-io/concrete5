@@ -15,8 +15,7 @@ final class BulkVoice extends AbstractMessageController {
     protected function onSubmit(array $recipients) {
         $params = (new VoiceParams)
             ->setFrom($this->config['from'])
-            ->setText($this->getText())
-            ->setXml((bool)$this->post('xml', false));
+            ->setText($this->getText());
 
         foreach ($recipients as $to) {
             $msg[] = $this->client->voice($params->setTo($to));
