@@ -3,61 +3,52 @@
 defined('C5_EXECUTE') or die('Access Denied.');
 
 class VoiceParams {
-    private string|null $from;
-
-    private string|null $text;
-
-    private string|null $to;
+    private ?string $from;
+    private ?string $text;
+    private ?string $to;
+    private ?bool $xml;
 
     /**
      * @unused
      */
     private bool $json = true;
 
-    public function getFrom(): string|null {
+    public function getFrom(): ?string {
         return $this->from;
     }
 
-    /**
-     * @param string|null $from
-     * @return $this
-     */
-    public function setFrom($from) {
+    public function setFrom(?string $from): static {
         $this->from = $from;
 
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getText() {
+    public function getText(): ?string {
         return $this->text;
     }
 
-    public function setText(string $text): self {
+    public function setText(string $text): static {
         $this->text = $text;
 
         return $this;
     }
 
-    public function getTo(): string|null {
+    public function getTo(): ?string {
         return $this->to;
     }
 
-    public function setTo(string $to): self {
+    public function setTo(string $to): static {
         $this->to = $to;
 
         return $this;
     }
 
-    private bool|null $xml;
 
-    public function getXml(): bool|null {
+    public function getXml(): ?bool {
         return $this->xml;
     }
 
-    public function setXml(bool|null $xml): self {
+    public function setXml(?bool $xml): static {
         $this->xml = $xml;
 
         return $this;

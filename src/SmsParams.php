@@ -5,121 +5,107 @@ defined('C5_EXECUTE') or die('Access Denied.');
 class SmsParams {
     use ToArray;
 
-    private string|null $from;
-
-    private string|null $text;
-
-    private string|null $to;
+    private ?bool $flash;
+    private ?bool $no_reload;
+    private ?bool $performance_tracking;
+    private ?string $delay;
+    private ?string $foreign_id;
+    private ?string $from;
+    private ?string $label;
+    private ?string $text;
+    private ?string $to;
 
     /**
      * @unused
      */
     private bool $json = true;
 
-    public function getFrom(): string|null {
+    public function getFrom(): ?string {
         return $this->from;
     }
 
-    /**
-     * @param string|null $from
-     * @return $this
-     */
-    public function setFrom($from) {
+    public function setFrom(?string $from): static {
         $this->from = $from;
 
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getText() {
+    public function getText(): ?string {
         return $this->text;
     }
 
-    public function setText(string $text): self {
+    public function setText(string $text): static {
         $this->text = $text;
 
         return $this;
     }
 
-    public function getTo(): string|null {
+    public function getTo(): ?string {
         return $this->to;
     }
 
-    public function setTo(string $to): self {
+    public function setTo(string $to): static {
         $this->to = $to;
 
         return $this;
     }
 
-    private string|null $delay;
 
-    private bool|null $flash;
-
-    private string|null $foreign_id;
-
-    private string|null $label;
-
-    private bool|null $no_reload;
-
-    private bool|null $performance_tracking;
-
-    public function getDelay(): string|null {
+    public function getDelay(): ?string {
         return $this->delay;
     }
 
-    public function setDelay(string|null $delay): self {
+    public function setDelay(?string $delay): static {
         $this->delay = $delay;
 
         return $this;
     }
 
-    public function getFlash(): bool|null {
+    public function getFlash(): ?bool {
         return $this->flash;
     }
 
-    public function setFlash(bool|null $flash): self {
+    public function setFlash(?bool $flash): static {
         $this->flash = $flash;
 
         return $this;
     }
 
-    public function getForeignId(): string|null {
+    public function getForeignId(): ?string {
         return $this->foreign_id;
     }
 
-    public function setForeignId(string|null $foreign_id): self {
+    public function setForeignId(?string $foreign_id): static {
         $this->foreign_id = $foreign_id;
 
         return $this;
     }
 
-    public function getLabel(): string|null {
+    public function getLabel(): ?string {
         return $this->label;
     }
 
-    public function setLabel(string|null $label): self {
+    public function setLabel(?string $label): static {
         $this->label = $label;
 
         return $this;
     }
 
-    public function getNoReload(): bool|null {
+    public function getNoReload(): ?bool {
         return $this->no_reload;
     }
 
-    public function setNoReload(bool|null $no_reload): self {
+    public function setNoReload(?bool $no_reload): static {
         $this->no_reload = $no_reload;
 
         return $this;
     }
 
-    public function getPerformanceTracking(): bool|null {
+    public function getPerformanceTracking(): ?bool {
         return $this->performance_tracking;
     }
 
-    public function setPerformanceTracking(bool|null $performance_tracking): self {
+    public function setPerformanceTracking(?bool $performance_tracking): static {
         $this->performance_tracking = $performance_tracking;
 
         return $this;

@@ -19,7 +19,8 @@ class ApiClient {
         return json_decode($this->client
             ->setParameterPost($data->toArray())
             ->setUri('https://gateway.seven.io/api/' . $endpoint)
-            ->send()->getBody());
+            ->send()
+            ->getBody());
     }
 
     public function sms(SmsParams $params): object {
