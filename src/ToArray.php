@@ -14,10 +14,6 @@ trait ToArray {
             $property->setAccessible(true);
             $value = $property->getValue($this);
 
-            if (is_bool($value)) {
-                $value = (int)$value;
-            }
-
             $arr[$property->getName()] = $value;
         }
 
