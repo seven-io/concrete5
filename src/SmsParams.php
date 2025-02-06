@@ -2,10 +2,57 @@
 
 defined('C5_EXECUTE') or die('Access Denied.');
 
-/**
- *
- */
-class SmsParams extends AbstractParams {
+class SmsParams {
+    use ToArray;
+
+    private string|null $from;
+
+    private string|null $text;
+
+    private string|null $to;
+
+    /**
+     * @unused
+     */
+    private bool $json = true;
+
+    public function getFrom(): string|null {
+        return $this->from;
+    }
+
+    /**
+     * @param string|null $from
+     * @return $this
+     */
+    public function setFrom($from) {
+        $this->from = $from;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getText() {
+        return $this->text;
+    }
+
+    public function setText(string $text): self {
+        $this->text = $text;
+
+        return $this;
+    }
+
+    public function getTo(): string|null {
+        return $this->to;
+    }
+
+    public function setTo(string $to): self {
+        $this->to = $to;
+
+        return $this;
+    }
+
     private string|null $delay;
 
     private bool|null $flash;
