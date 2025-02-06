@@ -54,14 +54,13 @@ final class Controller extends Package {
 
         foreach (Options::all() as $group => $arr) {
             foreach ($arr as $k => $default) {
-                $key = "$group.$k";
+                $key = $group . '.' . $k;
 
                 if ($this->config->has($key)) {
                     continue;
                 }
 
-                $this->config->save(
-                    $key, (string)(is_bool($default) ? (int)$default : $default));
+                $this->config->save($key, (string)(is_bool($default) ? (int)$default : $default));
             }
         }
 

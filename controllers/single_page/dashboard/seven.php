@@ -18,7 +18,7 @@ final class Seven extends AbstractSinglePageDashboardController {
             foreach (Options::all() as $group => $data) {
                 foreach (array_keys($data) as $setting) {
                     $this->Config->save(
-                        "$group.$setting", $this->post("$group:$setting"));
+                        $group . '.' . $setting, $this->post($group . ':' . $setting));
                 }
             }
 
@@ -26,7 +26,7 @@ final class Seven extends AbstractSinglePageDashboardController {
         }
 
         $to = Url::to(Routes::$DASHBOARD);
-        if ('' !== $msg) $to .= "?message=$msg";
+        if ('' !== $msg) $to .= '?message=' . $msg;
 
         $this->redirect($to);
     }

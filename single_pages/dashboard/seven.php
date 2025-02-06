@@ -39,7 +39,7 @@
         </div>
 
         <div class='form-group'>
-            <div class="checkbox">
+            <div class='checkbox'>
                 <label>
                     <?= $form->checkbox('sms:flash', 1, $sms['flash']) ?>
                     <?= t('Flash: Message gets directly displayed in the receiver’s display') ?>
@@ -48,7 +48,7 @@
         </div>
 
         <div class='form-group'>
-            <div class="checkbox">
+            <div class='checkbox'>
                 <label>
                     <?= $form->checkbox('sms:performance_tracking', 1, $sms['performance_tracking']) ?>
                     <?= t('Enable Performance Tracking:') ?>

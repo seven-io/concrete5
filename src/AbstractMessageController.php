@@ -117,7 +117,7 @@ abstract class AbstractMessageController extends AbstractSinglePageDashboardCont
     /** @return UserInfo[] */
     private function getGroupMembers(): array|null {
         $groupId = (int)$this->post('filter_group');
-        if ($groupId === self::$ALL_GROUPS_ID) { // groupID is set to "All"
+        if ($groupId === self::$ALL_GROUPS_ID) { // groupID is set to 'All'
             return $this->repo->all(true); // return all active users
         }
 
