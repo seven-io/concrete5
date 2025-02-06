@@ -14,7 +14,6 @@ abstract class Options {
         'foreign_id' => null,
         'from' => null,
         'label' => null,
-        'no_reload' => false,
         'performance_tracking' => false,
     ];
 

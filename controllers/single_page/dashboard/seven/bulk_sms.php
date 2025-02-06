@@ -18,7 +18,6 @@ final class BulkSms extends AbstractMessageController {
             ->setForeignId($this->config['foreign_id'])
             ->setFrom($this->config['from'])
             ->setLabel($this->config['label'])
-            ->setNoReload((bool)$this->config['no_reload'])
             ->setPerformanceTracking((bool)$this->config['performance_tracking'])
             ->setText($this->getText())
             ->setTo(implode(',', $recipients)));

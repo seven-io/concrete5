@@ -6,7 +6,6 @@ class SmsParams {
     use ToArray;
 
     private ?bool $flash;
-    private ?bool $no_reload;
     private ?bool $performance_tracking;
     private ?string $delay;
     private ?string $foreign_id;
@@ -87,16 +86,6 @@ class SmsParams {
 
     public function setLabel(?string $label): static {
         $this->label = $label;
-
-        return $this;
-    }
-
-    public function getNoReload(): ?bool {
-        return $this->no_reload;
-    }
-
-    public function setNoReload(?bool $no_reload): static {
-        $this->no_reload = $no_reload;
 
         return $this;
     }
