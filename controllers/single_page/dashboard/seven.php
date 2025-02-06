@@ -25,7 +25,7 @@ final class Seven extends AbstractSinglePageDashboardController {
             $msg = t('Settings updated!');
         }
 
-        $to = Url::to(Routes::$DASHBOARD);
+        $to = Url::to(Routes::DASHBOARD);
         if ('' !== $msg) $to .= '?message=' . $msg;
 
         $this->redirect($to);

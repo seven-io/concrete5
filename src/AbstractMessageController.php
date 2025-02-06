@@ -93,7 +93,7 @@ abstract class AbstractMessageController extends AbstractSinglePageDashboardCont
     /** @return void */
     public function view() {
         if (!$this->client) {
-            $this->set('dashboardLink', URL::to(Routes::$DASHBOARD));
+            $this->set('dashboardLink', URL::to(Routes::DASHBOARD));
         }
 
         $this->set('group', $this->post('group', self::$ALL_GROUPS_ID));
